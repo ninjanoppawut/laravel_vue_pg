@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\formController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,9 +12,7 @@ Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('test', function () {
-    return Inertia::render('Test');
-})->middleware(['auth', 'verified'])->name('test');
+Route::resource('test', TestController::class)->middleware(['auth', 'verified']);
 Route::resource("form", formController::class);
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

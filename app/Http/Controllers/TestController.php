@@ -6,13 +6,22 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Test;
 class TestController extends Controller
 {
-    public function index() {}
+    public function index() {
+        return Inertia::render('TestIndex',[
+            'tests' =>  Test::all()
+        ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('Test');
+    }
 
     public function show($id) {}
 
     public function store(Request $request)  {
         //
-        $test= Test::create($request->validated());
+        $test= Test::create($request->all());
 
         return redirect()->route('test.index')->with('success', 'Form submitted successfully!');
     }

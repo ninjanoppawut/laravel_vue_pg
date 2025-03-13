@@ -17,7 +17,8 @@ class TestController extends Controller
         return Inertia::render('Test');
     }
 
-    public function show($id) {}
+    public function show($id) {
+    }
 
     public function store(Request $request)  {
         //
@@ -25,5 +26,19 @@ class TestController extends Controller
 
         return redirect()->route('test.index')->with('success', 'Form submitted successfully!');
     }
+    public function destroy($id) {
+        $test = Test::findOrFail($id);
+        $test->delete();
 
+        return redirect()->route('test.index')->with('success', 'Deleted successfully!');
+    }
+    public function edit(Test $test)
+    {
+        return Inertia::render('TestEdit', ['test' => $test]);
+    }
+    public function update(Request $request, Test $test) {
+        $test->update($request);
+    
+        return redirect()->route('test.index')->with('success', 'Updated Successfully!');
+    }
 }

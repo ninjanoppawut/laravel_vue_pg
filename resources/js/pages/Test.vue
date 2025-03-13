@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
-import {type BreadcrumbItem} from '@/types';
-import {Head, useForm} from '@inertiajs/vue3';
+import { type BreadcrumbItem } from '@/types';
+import { Head, useForm } from '@inertiajs/vue3';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -11,37 +11,25 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const form = useForm({
-    name: ''
-})
-
+    name: '',
+});
 
 const save = () => {
-    form.post(route('test.store'))
-}
-
+    form.post(route('test.store'));
+};
 </script>
 
 <template>
-    <Head title="Test Form"/>
+    <Head title="Test Form" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <form @submit.prevent="save">
-            <div class="w-2xl mx-auto p-6 bg-white shadow-lg rounded-md mt-8">
-                <h2 class="text-xl font-bold mb-4">Card</h2>
-                <div class="flex items-center gap-2 mb-4">
-                    <input
-                        v-model="form.name"
-                        type="text"
-                        placeholder="Enter name"
-                        class="border px-3 py-2 rounded w-full"
-                    />
-                    <button
-                        class="bg-blue-500 text-white px-4 py-2 rounded"
-                    >
-                        Add
-                    </button>
+            <div class="w-2xl mx-auto mt-8 rounded-md bg-white p-6 shadow-lg">
+                <h2 class="mb-4 text-xl font-bold">Card</h2>
+                <div class="mb-4 flex items-center gap-2">
+                    <input v-model="form.name" type="text" placeholder="Enter name" class="w-full rounded border px-3 py-2" />
+                    <button class="rounded bg-blue-500 px-4 py-2 text-white">Add</button>
                 </div>
-
             </div>
         </form>
     </AppLayout>

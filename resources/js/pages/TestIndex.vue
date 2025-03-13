@@ -26,7 +26,7 @@ const onOpenEditForm = (id) => {
     form.id = selectedEditId;
 };
 const update = () => {
-    form.put(route('test.update'), form.id);
+    form.put(route('test.update', form.id));
     onCloseEditForm();
 };
 const onCloseEditForm = () => {
@@ -50,7 +50,7 @@ const onCloseEditForm = () => {
                     <div class="flex w-full justify-between">
                         <input v-model="form.name" class="w-full rounded border px-3 py-2" />
                         <!-- <Link as="button" class="rounded bg-blue-500 px-4 py-2 text-white" :href="route('test.edit', test.id)"> Edit </Link> -->
-                        <button class="p-2" type="submit" @click="update">Confirm</button>
+                        <button class="p-2" type="submit">Confirm</button>
                         <button class="p-2" type="button" @click="onCloseEditForm">Cancel</button>
                     </div>
                 </form>

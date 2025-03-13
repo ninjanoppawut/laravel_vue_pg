@@ -37,8 +37,8 @@ class TestController extends Controller
         return Inertia::render('TestEdit', ['test' => $test]);
     }
     public function update(Request $request, Test $test) {
-        $test->update($request);
-    
+        $test->update($request->all());
+
         return redirect()->route('test.index')->with('success', 'Updated Successfully!');
     }
 }
